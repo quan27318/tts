@@ -224,6 +224,7 @@ export default function CreateNewWork() {
                 </Form.Item>
                 <Form.Item label="Tạo mới:">
                     <Button
+                    type='primary'
                     htmlType='submit'
                     >Create New </Button>
                 </Form.Item>

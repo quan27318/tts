@@ -5,7 +5,7 @@ import { Button, Table, Modal, Input, Col, Form} from 'antd';
 import axios from 'axios';
 import moment from 'moment';
 import {Link} from "react-router-dom";
-import {EditFilled, CloseCircleOutlined, CloseSquareOutlined} from "@ant-design/icons";
+import {EditFilled, CloseCircleOutlined, CloseSquareOutlined, WarningOutlined} from "@ant-design/icons";
 
 function Home() {
   const [data, setData] = useState([]);
@@ -57,6 +57,7 @@ const [modal, setModal] = useState({
                       ...deleteModal,
                       footer: (<div style={{textAlign: 'left'}}>
                           <Button
+                         style={{backgroundColor:'red', color: 'white'}}
                           shape="round"
                               className = ' buttonSave'
                               onClick={() => {
@@ -69,9 +70,9 @@ const [modal, setModal] = useState({
                                         setDeleteModal({
                                             ...deleteModal, isOpen: true
                                             , footer: null
-                                            , title: 'Can not delete this work'
+                                            , title: 'Bạn Không Thể Xóa Công Việc Này ' 
                                             , content: (<p>
-                                                This work already sent for review.
+                                                Công Việc Này Hiện Đã  Được Gửi Duyệt!!
                                             </p>),
 
                                         })
@@ -154,6 +155,7 @@ const [modal, setModal] = useState({
       title: 'Diễn Giải',
       dataIndex: 'explain',
       key : 'explain ',
+      ellipsis: true,
     },
     {
       title: 'Trạng Thái',
@@ -229,6 +231,7 @@ console.log("meme", data.length)
                     setModal({...modal, isOpen: false});
                 }}
                 footer={[
+
                     
                     <Button
                     shape="round"
@@ -239,7 +242,7 @@ console.log("meme", data.length)
                             ...deleteModal,
                             footer: (<div style={{textAlign: 'left'}}>
                                 <Button
-                                
+                                style={{backgroundColor:'red', color: 'white'}}
                                 shape="round"
                                     className = ' buttonSave'
                                     onClick={() => {
@@ -253,10 +256,12 @@ console.log("meme", data.length)
                                                 setDeleteModal({
                                                     ...deleteModal, isOpen: true
                                                     , footer: null
-                                                    , title: 'Can not delete this work'
-                                                    , content: (<p>
-                                                        This work already sent for review.
-                                                    </p>),
+                                                    , title: 'Bạn Không Thể Xóa Công Việc Này'
+                                                    , content: (<h3
+                                                    style={{color: 'red'}}
+                                                    >
+                                                        Công Việc Này Hiện Đã Được Gửi Duyệt!! <WarningOutlined />
+                                                    </h3>),
 
                                                 })
                                         })
@@ -287,69 +292,72 @@ console.log("meme", data.length)
                 closable={false}
                 
             >
+              
             
 
                 <table
+               
                 >
                     <tr>
 
-                        <td style={{fontSize: '18px', color: '#838688'}}>ID</td>
+                        <td style={{fontSize: '15px', color: '#838688'}}>ID</td>
                         <td style={{
-                            fontSize: '18px',
+                            fontSize: '15px',
                             color: '#838688',
                             textAlign: 'justify',
                             paddingLeft: '35px'
                         }}>{modal.data.id}</td>
                     </tr>
                     <tr>
-                        <td style={{fontSize: '18px', color: '#838688'}}>Tiêu Đề</td>
+                        <td style={{fontSize: '15px', color: '#838688'}}>Tiêu Đề</td>
                         <td style={{
-                            fontSize: '18px',
+                            fontSize: '15px',
                             color: '#838688',
                             textAlign: 'justify',
                             paddingLeft: '35px'
                         }}>{modal.data.description}</td>
                     </tr>
                     <tr>
-                        <td style={{fontSize: '18px', color: '#838688'}}>Loại Công Việc</td>
+                        <td style={{fontSize: '15px', color: '#838688'}}>Loại Công Việc</td>
                         <td style={{
-                            fontSize: '18px',
+                            fontSize: '15px',
                             color: '#838688',
                             textAlign: 'justify',
                             paddingLeft: '35px'
                         }}>{modal.data.typeId}</td>
                     </tr>
                     <tr>
-                        <td style={{fontSize: '18px', color: '#838688'}}>Ngày Bắt Đầu</td>
+                        <td style={{fontSize: '15px', color: '#838688'}}>Ngày Bắt Đầu</td>
                         <td style={{
-                            fontSize: '18px',
+                            fontSize: '15px',
                             color: '#838688',
                             textAlign: 'justify',
                             paddingLeft: '35px'
                         }}>{modal.data.dayStart}</td>
                     </tr>
                     <tr>
-                        <td style={{fontSize: '18px', color: '#838688'}}>Ngày Kết Thúc</td>
+                        <td style={{fontSize: '15px', color: '#838688'}}>Ngày Kết Thúc</td>
                         <td style={{
-                            fontSize: '18px',
+                            fontSize: '15px',
                             color: '#838688',
                             textAlign: 'justify',
                             paddingLeft: '35px'
                         }}>{modal.data.dayEnd}</td>
                     </tr>
                     <tr>
-                        <td style={{fontSize: '18px', color: '#838688'}}>Diễn giải</td>
+                        <td style={{fontSize: '15px', color: '#838688', width:"25%"}}>Diễn giải</td>
                         <td style={{
-                            fontSize: '18px',
+                            fontSize: '15px',
                             color: '#838688',
                             textAlign: 'justify',
-                            paddingLeft: '35px'
+                            paddingLeft: '35px',
+                            
                         }}>{modal.data.explain}</td>
                     </tr>
                     <tr>
-                        <td style={{fontSize: '18px', color: '#838688'}}>Trạng Thái</td>
+                        <td style={{fontSize: '15px', color: '#838688'}}>Trạng Thái</td>
                         <td style={{
-                            fontSize: '18px',
+                            fontSize: '15px',
                             color: '#838688',
                             textAlign: 'justify',
                             paddingLeft: '35px'
@@ -375,8 +383,8 @@ console.log("meme", data.length)
                             id: record.id,
                             description: record.description,
                             typeId: record.typeId,
-                            dayStart: moment(new Date(record.dayStart).toLocaleDateString('en-US')).format(' DD/MM/YYYY'),
-                            dayEnd: moment(new Date(record.dayEnd).toLocaleDateString('en-US')).format(' DD/MM/YYYY'),
+                            dayStart: record.dayStart,
+                            dayEnd: record.dayEnd,
                             explain: record.explain,
                             isActive: record.isActive
                         }
