@@ -149,16 +149,18 @@ export default function EditWork() {
                 ]}
                 >
                     <Input
-                   
+                  
                    onChange={handleDesChange}
                     />
                 </Form.Item>
                 <Form.Item label="Loại công việc:"  name='typeId' 
                 rules={[{required: true, message:"Loại công việc không được để trống"}]}
+                
                 >
                     
                     <Select
                     onSelect={handleTypeChange}
+                   
                     
                 >
                     {type.map(function (dataType) {

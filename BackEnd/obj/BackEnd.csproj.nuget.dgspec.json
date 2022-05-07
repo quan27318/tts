@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ADMIN\\Desktop\\TTS\\BackEnd\\BackEnd.csproj": {}
+    "C:\\Users\\ADMIN\\Desktop\\TTS\\backend\\BackEnd.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ADMIN\\Desktop\\TTS\\BackEnd\\BackEnd.csproj": {
+    "C:\\Users\\ADMIN\\Desktop\\TTS\\backend\\BackEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ADMIN\\Desktop\\TTS\\BackEnd\\BackEnd.csproj",
+        "projectUniqueName": "C:\\Users\\ADMIN\\Desktop\\TTS\\backend\\BackEnd.csproj",
         "projectName": "BackEnd",
-        "projectPath": "C:\\Users\\ADMIN\\Desktop\\TTS\\BackEnd\\BackEnd.csproj",
+        "projectPath": "C:\\Users\\ADMIN\\Desktop\\TTS\\backend\\BackEnd.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ADMIN\\Desktop\\TTS\\BackEnd\\obj\\",
+        "outputPath": "C:\\Users\\ADMIN\\Desktop\\TTS\\backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config"
