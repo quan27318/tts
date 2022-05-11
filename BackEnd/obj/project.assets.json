@@ -2026,11 +2026,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ADMIN\\Desktop\\TTS\\BackEnd\\BackEnd.csproj",
+      "projectUniqueName": "C:\\Users\\ADMIN\\Desktop\\TTS\\Backend\\BackEnd.csproj",
       "projectName": "BackEnd",
-      "projectPath": "C:\\Users\\ADMIN\\Desktop\\TTS\\BackEnd\\BackEnd.csproj",
+      "projectPath": "C:\\Users\\ADMIN\\Desktop\\TTS\\Backend\\BackEnd.csproj",
       "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ADMIN\\Desktop\\TTS\\BackEnd\\obj\\",
+      "outputPath": "C:\\Users\\ADMIN\\Desktop\\TTS\\Backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -15,10 +15,12 @@ namespace BackEnd.Controllers
     [ApiController]
     public class WorkFLowController : ControllerBase
     {
+        private ILogger<WorkFLowController> _logger;
         private readonly IWorkFlowService _workflowService;
-        public WorkFLowController(IWorkFlowService workflowService)
+        public WorkFLowController(  ILogger<WorkFLowController> logger ,IWorkFlowService workflowService)
         {
             _workflowService = workflowService;
+            _logger = logger;
         }
    [EnableCors("Policy")]
     [HttpGet("/api/workflow")]

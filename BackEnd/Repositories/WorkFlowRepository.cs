@@ -11,13 +11,16 @@ namespace BackEnd.Repositories{
 
         public void AddWorkflow(WorkFlow workflow)
         {
+            
+            if(!CheckDate(workflow.DayStart)) throw new ApplicationException("Day start cannot be started in the past ");
+            if(!CheckDate(workflow.DayEnd)) throw new ApplicationException("Day end cannot be started in the past ");
             _dbContext.WorkFlows.Add(workflow);
             _dbContext.SaveChanges();
         }
 
         public List<WorkFlow> GetAllWorkflow()
         {
-            return _dbContext.WorkFlows.ToList();
+            return _dbContext.WorkFlows.ToList();       
         }
 
         public WorkFlow GetWorkflow(int id)
@@ -30,14 +33,18 @@ namespace BackEnd.Repositories{
         public void RemoveWorkflow(int id)
         {
             var works = _dbContext.WorkFlows.Where(x=>x.Id == id).FirstOrDefault();
-             if (works.IsActive == false) throw new KeyNotFoundException ("User is already disabled");
+            if(works == null) throw new KeyNotFoundException("Workflow not found");
+            if (works.IsActive == false) throw new KeyNotFoundException ("not active");
             _dbContext.WorkFlows.Remove(works);
             _dbContext.SaveChanges();
         }
 
         public void UpdateWorkflow(WorkFlow workflow)
         {
+            
             var works = _dbContext.WorkFlows.Where(x =>x.Id == workflow.Id).FirstOrDefault();
+            if(works == null) throw new KeyNotFoundException ("id not found"); 
+
             works.Description = workflow.Description;
             works.DayStart = workflow.DayStart;
             works.DayEnd = workflow.DayEnd;
@@ -47,6 +54,12 @@ namespace BackEnd.Repositories{
             works.IsActive = workflow.IsActive;
             _dbContext.SaveChanges();
 
+        }
+        public bool CheckDate ( DateTime date){
+            if(DateTime.Compare(DateTime.Now, date)>1){
+                return false;
+            }
+            return true;
         }
     }
 }
