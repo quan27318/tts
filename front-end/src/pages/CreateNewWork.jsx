@@ -114,8 +114,14 @@ export default function CreateNewWork() {
      forms.setFieldsValue({
          dayEnd : date 
      })
+     
+
+
+
+     
     console.log(forms.getFieldValue(['dayStart']).startOf('day').format("YYYY-MM-DD"))
     console.log(date)
+    console.log("check", check)
     //  console.log('changedDay', dayStart)
     //  console.log('changedDayccccccccccccccc', dayFisrtBeforeChange)
     
@@ -170,9 +176,9 @@ export default function CreateNewWork() {
                             return Promise.reject("Ngày bắt đầu không thể ở quá khứ")
                         }
                         return Promise.resolve(
-                            changeEndDay(),
-                            console.log(value),
-                            console.log("sadasdasd",forms.getFieldValue(['dayStart']))
+                           
+                          
+                            
                         );
                         
                     }
@@ -182,7 +188,10 @@ export default function CreateNewWork() {
                     <DatePicker
                     format="DD-MM-YYYY"
                     
-                    onChange={handleDayStartChange}
+                    onChange={()=>{
+                        changeEndDay()
+                        handleDayStartChange()
+                    }}
                     />
                 </Form.Item>
                 <Form.Item label="Ngày kết thúc:" name='dayEnd'
@@ -207,8 +216,8 @@ export default function CreateNewWork() {
                 >
                     <DatePicker
                     format="DD-MM-YYYY"
-                    disabledDate={d =>  d.isBefore(forms.getFieldValue(['dayStart'])==undefined ?moment.tz("Asia/Ho_Chi_Minh").startOf('day'):forms.getFieldValue(['dayStart']))  }
-                    onChange={handleDayEndChange}
+                    disabledDate={d =>  d.isBefore(forms.getFieldValue(['dayStart'])===undefined ?moment.tz("Asia/Ho_Chi_Minh").startOf('day'):forms.getFieldValue(['dayStart']))  }
+                    onFinish={handleDayEndChange}
                     />
                 </Form.Item>
                 <Form.Item label="Diễn giải:" name='explain'

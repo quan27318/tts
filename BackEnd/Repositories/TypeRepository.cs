@@ -8,7 +8,7 @@ namespace BackEnd.Repositories{
         {
             _dbContext = dbContext;
         }
-
+        
         public void CreateType(TypeOfWork type)
         {
             _dbContext.Types.Add(type);
@@ -23,13 +23,15 @@ namespace BackEnd.Repositories{
         public void RemoveType(int id)
         {
             var type = _dbContext.Types.Where(t => t.TypeId == id).FirstOrDefault();
-            _dbContext.Types.Remove(type);
+            if (type == null) throw new KeyNotFoundException ("type not found");
+           _dbContext.Types.Remove(type);
             _dbContext.SaveChanges();
         }
 
         public void UpdateType(TypeOfWork type)
         {
             var typeUpdate = _dbContext.Types.Where(x=>x.TypeId == type.TypeId).FirstOrDefault();
+            if(typeUpdate == null) throw new KeyNotFoundException ("Type not found");
             typeUpdate.TypeName = type.TypeName;
             _dbContext.SaveChanges();
         }

@@ -4,8 +4,9 @@ using BackEnd.Repositories;
 namespace BackEnd.Services{
     public class WorkFlowService : IWorkFlowService
     {
+      
         private readonly IWorkFlowRepository _workflowRepository;
-        public WorkFlowService(IWorkFlowRepository workflowRepository)
+        public WorkFlowService( IWorkFlowRepository workflowRepository)
         {
             _workflowRepository = workflowRepository;
         }
