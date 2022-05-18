@@ -1,7 +1,9 @@
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BackEnd.Models{
     public class WorkFlow{
+        [Key]
         public int Id{ get; set; }
         public string? Description{ get; set; }
         public DateTime DayStart{ get; set; }

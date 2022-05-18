@@ -2026,11 +2026,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ADMIN\\Desktop\\TTS\\Backend\\BackEnd.csproj",
+      "projectUniqueName": "C:\\Users\\ADMIN\\Desktop\\TTS\\BackEnd\\BackEnd.csproj",
       "projectName": "BackEnd",
-      "projectPath": "C:\\Users\\ADMIN\\Desktop\\TTS\\Backend\\BackEnd.csproj",
+      "projectPath": "C:\\Users\\ADMIN\\Desktop\\TTS\\BackEnd\\BackEnd.csproj",
       "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ADMIN\\Desktop\\TTS\\Backend\\obj\\",
+      "outputPath": "C:\\Users\\ADMIN\\Desktop\\TTS\\BackEnd\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -2094,7 +2094,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }

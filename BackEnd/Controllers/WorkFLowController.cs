@@ -50,5 +50,23 @@ namespace BackEnd.Controllers
         _workflowService.UpdateWorkflow(workflow);
         return HttpStatusCode.OK;
     }
+    [EnableCors("Policy")]
+    [HttpGet("/api/GetAllWorkflowStoredProcedures")]
+    public List<WorkFlow> GetAllWorkflowStoredProcedures(){
+        return _workflowService.GetAllWorkflowStoredProcedures();
+      }
+      [EnableCors("Policy")]
+    [HttpGet("/api/PaginationWorkflow")]
+    public List<WorkFlow> PaginationWorkflow(int pageNumber, int pageSize){
+        return _workflowService.PaginationWorkflow(pageNumber, pageSize);
+      
+      }
+       [EnableCors("Policy")]
+    [HttpGet("/api/CountID")]
+    public int CountId(){
+       return   _workflowService.CountId();
+        
+      }
     }
+    
 }

@@ -81,7 +81,7 @@ function App() {
             </div>
           </Content>
           <Footer style={{ textAlign: "center" }}>
-          Made by     <GithubOutlined />    quan27318
+          Designed & Developed by     <GithubOutlined />    quan27318
           </Footer>
         </Layout>
         
