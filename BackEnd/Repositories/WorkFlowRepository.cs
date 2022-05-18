@@ -1,4 +1,6 @@
 using BackEnd.Models;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 
 namespace BackEnd.Repositories{
     public class WorkFlowRepository : IWorkFlowRepository
@@ -60,6 +62,36 @@ namespace BackEnd.Repositories{
                 return false;
             }
             return true;
+        }
+         public List<WorkFlow> GetAllWorkflowStoredProcedures()
+        {
+         
+            string sql = "EXEC WORKFLOW";
+            return   _dbContext.WorkFlows.FromSqlRaw(sql).ToList();
+               
+        }
+
+        public List<WorkFlow> PaginationWorkflow(int pageNumber, int pageSize)
+        {
+           string sql  = "EXEC getRowPerPage" + " " + pageNumber + "," + pageSize;
+            return _dbContext.WorkFlows.FromSqlRaw(sql).ToList();
+        }
+
+        public int CountId()
+        {
+            string sql = "execute getCountId @references output ";
+            // int m  = int.Parse( _dbContext.WorkFlows.FromSqlRaw(sql).ToList());
+            var param = new SqlParameter[] {
+                     
+                        new SqlParameter() {
+                            ParameterName = "@references",
+                             SqlDbType =  System.Data.SqlDbType.Int,
+                            Direction = System.Data.ParameterDirection.Output,
+                        }};
+            // var listCount = _dbContext.WorkFlows.FromSqlRaw(sql,param[0].Value);
+            var result = _dbContext.Database.ExecuteSqlRaw(sql,param);
+             return  Convert.ToInt32(param[0].Value) ;
+            // return  _dbContext.WorkFlows.FromSqlRaw(sql).ToList()[0];
         }
     }
 }

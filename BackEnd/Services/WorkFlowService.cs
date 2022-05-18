@@ -16,14 +16,29 @@ namespace BackEnd.Services{
             _workflowRepository.AddWorkflow(workflow);
         }
 
+        public int  CountId()
+        {
+           return _workflowRepository.CountId();
+        }
+
         public List<WorkFlow> GetAllWorkflow()
         {
             return _workflowRepository.GetAllWorkflow();
         }
 
+        public List<WorkFlow> GetAllWorkflowStoredProcedures()
+        {
+            return _workflowRepository.GetAllWorkflowStoredProcedures();
+        }
+
         public WorkFlow GetWorkflow(int id)
         {
             return _workflowRepository.GetWorkflow(id);
+        }
+
+        public List<WorkFlow> PaginationWorkflow(int pageNumber, int pageSize)
+        {
+            return _workflowRepository.PaginationWorkflow(pageNumber,pageSize);
         }
 
         public void RemoveWorkflow(int id)

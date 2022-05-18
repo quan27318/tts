@@ -9,10 +9,11 @@ import {EditFilled, CloseCircleOutlined, CloseSquareOutlined, WarningOutlined} f
 
 function Home() {
   const [data, setData] = useState([]);
+  
+  const [count, setCount] = useState(1);
+  const [searchText, setSearchText] = useState("");
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
-
-  const [searchText, setSearchText] = useState("");
   const [deleteModal, setDeleteModal] = useState({
     isOpen: false,
     title: "Bạn Chắc Chứ?",
@@ -27,9 +28,24 @@ const [modal, setModal] = useState({
   data: {},
 
 });
+   
+    // console.log("number" , page)
+    // console.log("size" , pageSize)
+    // console.log("Count Data", count)
+    // console.log("Data" , data)
+    useEffect(() => {
+        axios
+        .get(`https://localhost:7292/api/CountID`)
+        .then((res)=>{
+            
+            setCount(res.data)
+           
+        })
+    },[])
+    
   useEffect(() =>{
     axios
-    .get(`https://localhost:7292/api/workflow`,{})
+    .get(`https://localhost:7292/api/PaginationWorkflow?pageNumber=${page}&pageSize=${pageSize}`,{})
     .then((res)=>{
       let repData = res.data;
       repData.forEach((element)=>{
@@ -105,7 +121,7 @@ const [modal, setModal] = useState({
     .catch(function(err){
       console.log(err.message);
     })
-  },[])
+  },[page,pageSize])
   const columns =[
     {
       title: "No.",
@@ -179,18 +195,23 @@ const [modal, setModal] = useState({
                     u.dayStart.toLowerCase().includes(searchText.toLowerCase())
             );
   const pagination = {
+    
     current: page,
     PageSize: pageSize,
-    total: finalData.length,
-    pageSizeOptions: [5, 10, 15, 20],
+    total: count,
+    showSizeChanger  : true,
+    pageSizeOptions: [5, 10, 15, 20, 30, 50],
     className: "ant-btn-dangerous",
     dangerous: true,
+    showQuickJumper : true,
     onChange: (page, pageSize) => {
         setPage(page);
         setPageSize(pageSize);
-    },
-};
-console.log("meme", data.length)
+        
+    }
+   
+};  
+
 
   return (
     <div >
@@ -367,12 +388,12 @@ console.log("meme", data.length)
 
 
             </Modal>
-            <h1 >Danh Sách Công Việc</h1>
+            <h1 style={{marginLeft:"25px"}}>Danh Sách Công Việc</h1>
       <Table
       key ="Id"
       columns = {columns}
       dataSource={finalData}
-      pagination={{ defaultPageSize: 10, showSizeChanger: true, pageSizeOptions: ['5', '10', '15', '20']}}
+      pagination={ pagination}
       onRow={(record) => {
         return {
             onClick: (e) => {
